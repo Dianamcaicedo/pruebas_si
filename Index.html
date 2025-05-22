@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡ATENCIÓN! ¡Peligro de Seguridad!</title>
+    <style>
+        /* Estilos CSS para el diseño */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+            background-color: #f0f0f0;
+            margin: 0;
+            overflow: hidden; /* Evita barras de desplazamiento si la imagen es muy grande */
+        }
+        #skull-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%; /* Limita el ancho en pantallas pequeñas */
+        }
+        #skull-image {
+            width: 100%; /* La imagen ocupará el 100% del contenedor */
+            max-width: 400px; /* Tamaño máximo para la imagen */
+            height: auto;
+            display: block; /* Elimina espacio extra debajo de la imagen */
+            margin: 0 auto 20px auto; /* Centra la imagen y añade margen abajo */
+        }
+        .hidden {
+            display: none !important; /* Para ocultar la imagen */
+        }
+        h1 {
+            color: #CC0000; /* Rojo para un mensaje de alerta */
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        /* Estilo para el mensaje de liberación */
+        #reveal-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="skull-container">
+        <img id="skull-image" src="calavera.png" alt="¡Peligro de Seguridad!">
+        <h1>¡ADVERTENCIA DE SEGURIDAD!</h1>
+        <p>Has hecho clic en un enlace potencialmente peligroso.</p>
+        <p>Este es un ejercicio de concienciación de seguridad. En la vida real, ¡esto podría haber sido muy grave!</p>
+        <p>Para quitar esta imagen y revelar la explicación, **presiona la tecla 'S'** (de Seguridad).</p>
+        <div id="reveal-message" class="hidden">
+            <p>¡Gracias por tu atención!</p>
+            <p>Ahora que has entendido el mensaje, recuerda siempre verificar la fuente de los correos electrónicos, no hacer clic en enlaces sospechosos y reportar cualquier actividad inusual.</p>
+            <p>Si tienes dudas, ¡pregunta a tu equipo de TI/Seguridad!</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript para detectar la tecla y ocultar/mostrar elementos
+        document.addEventListener('keydown', function(event) {
+            // Verifica si la tecla presionada es 's' o 'S'
+            if (event.key === 's' || event.key === 'S') {
+                const skullImage = document.getElementById('skull-image');
+                const revealMessage = document.getElementById('reveal-message');
+
+                if (skullImage && revealMessage) {
+                    skullImage.classList.add('hidden'); // Oculta la imagen
+                    revealMessage.classList.remove('hidden'); // Muestra el mensaje de liberación
+                    // Opcional: Centrar el mensaje si la imagen desaparece
+                    document.getElementById('skull-container').style.display = 'block'; // Asegura que el contenedor no se oculte.
+                }
+            }
+        });
+    </script>
+</body>
+</html>
